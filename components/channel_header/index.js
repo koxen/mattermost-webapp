@@ -43,7 +43,7 @@ function mapStateToProps(state, ownProps) {
         dmUser,
         dmUserStatus,
         enableFormatting: getBool(state, Preferences.CATEGORY_ADVANCED_SETTINGS, 'formatting', true),
-        rhsState: getRhsState(state)
+        rhsState: getRhsState(state),
     };
 }
 
@@ -58,8 +58,8 @@ function mapDispatchToProps(dispatch) {
             showMentions,
             closeRightHandSide,
             openModal,
-            getCustomEmojisInText
-        }, dispatch)
+            getCustomEmojisInText,
+        }, dispatch),
     };
 }
 

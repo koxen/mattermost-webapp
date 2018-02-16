@@ -9,7 +9,7 @@ import {mountWithIntl} from 'tests/helpers/intl-test-helper.jsx';
 import UserSettingsDisplay from 'components/user_settings/user_settings_display.jsx';
 
 jest.mock('actions/user_actions.jsx', () => ({
-    savePreferences: jest.fn()
+    savePreferences: jest.fn(),
 }));
 
 describe('components/user_settings/UserSettingsDisplay', () => {
@@ -18,7 +18,7 @@ describe('components/user_settings/UserSettingsDisplay', () => {
     const user = {
         id: 'user_id',
         username: 'username',
-        locale: 'en'
+        locale: 'en',
     };
 
     const requiredProps = {
@@ -29,7 +29,7 @@ describe('components/user_settings/UserSettingsDisplay', () => {
         closeModal: jest.fn(),
         collapseModal: jest.fn(),
         setRequireConfirm: jest.fn(),
-        setEnforceFocus: jest.fn()
+        setEnforceFocus: jest.fn(),
     };
 
     afterEach(() => {

@@ -64,7 +64,7 @@ export default function GetAndroidApp() {
                                     defaultMessage='continue with browser'
                                 />
                             </Link>
-                        )
+                        ),
                     }}
                 />
             </span>

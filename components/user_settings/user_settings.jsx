@@ -140,5 +140,5 @@ UserSettings.propTypes = {
     closeModal: PropTypes.func.isRequired,
     collapseModal: PropTypes.func.isRequired,
     setEnforceFocus: PropTypes.func.isRequired,
-    setRequireConfirm: PropTypes.func.isRequired
+    setRequireConfirm: PropTypes.func.isRequired,
 };

@@ -21,7 +21,7 @@ function mapStateToProps(state) {
         customBrand,
         enableCustomBrand,
         customDescriptionText,
-        siteName
+        siteName,
     };
 }
 

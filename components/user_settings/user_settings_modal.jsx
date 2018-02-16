@@ -19,40 +19,40 @@ import loadSettingsSidebar from 'bundle-loader?lazy!../settings_sidebar.jsx';
 const holders = defineMessages({
     general: {
         id: 'user.settings.modal.general',
-        defaultMessage: 'General'
+        defaultMessage: 'General',
     },
     security: {
         id: 'user.settings.modal.security',
-        defaultMessage: 'Security'
+        defaultMessage: 'Security',
     },
     notifications: {
         id: 'user.settings.modal.notifications',
-        defaultMessage: 'Notifications'
+        defaultMessage: 'Notifications',
     },
     display: {
         id: 'user.settings.modal.display',
-        defaultMessage: 'Display'
+        defaultMessage: 'Display',
     },
     sidebar: {
         id: 'user.settings.modal.sidebar',
-        defaultMessage: 'Sidebar'
+        defaultMessage: 'Sidebar',
     },
     advanced: {
         id: 'user.settings.modal.advanced',
-        defaultMessage: 'Advanced'
+        defaultMessage: 'Advanced',
     },
     confirmTitle: {
         id: 'user.settings.modal.confirmTitle',
-        defaultMessage: 'Discard Changes?'
+        defaultMessage: 'Discard Changes?',
     },
     confirmMsg: {
         id: 'user.settings.modal.confirmMsg',
-        defaultMessage: 'You have unsaved changes, are you sure you want to discard them?'
+        defaultMessage: 'You have unsaved changes, are you sure you want to discard them?',
     },
     confirmBtns: {
         id: 'user.settings.modal.confirmBtns',
-        defaultMessage: 'Yes, Discard'
-    }
+        defaultMessage: 'Yes, Discard',
+    },
 });
 
 class UserSettingsModal extends React.Component {
@@ -81,7 +81,7 @@ class UserSettingsModal extends React.Component {
             showConfirmModal: false,
             enforceFocus: true,
             currentUser: UserStore.getCurrentUser(),
-            show: false
+            show: false,
         };
 
         this.requireConfirm = false;
@@ -117,14 +117,14 @@ class UserSettingsModal extends React.Component {
     handleKeyDown(e) {
         if (Utils.cmdOrCtrlPressed(e) && e.shiftKey && e.keyCode === Constants.KeyCodes.A) {
             this.setState({
-                show: !this.state.show
+                show: !this.state.show,
             });
         }
     }
 
     handleToggle(value) {
         this.setState({
-            show: value
+            show: value,
         });
     }
 
@@ -138,7 +138,7 @@ class UserSettingsModal extends React.Component {
         }
 
         this.setState({
-            show: false
+            show: false,
         });
     }
 
@@ -147,7 +147,7 @@ class UserSettingsModal extends React.Component {
         this.setState({
             active_tab: 'general',
             active_section: '',
-            prev_active_section: ''
+            prev_active_section: '',
         });
     }
 
@@ -158,14 +158,14 @@ class UserSettingsModal extends React.Component {
         this.setState({
             active_tab: '',
             active_section: '',
-            prev_active_section: ''
+            prev_active_section: '',
         });
     }
 
     handleConfirm() {
         this.setState({
             showConfirmModal: false,
-            enforceFocus: true
+            enforceFocus: true,
         });
 
         this.requireConfirm = false;
@@ -179,7 +179,7 @@ class UserSettingsModal extends React.Component {
     handleCancelConfirmation() {
         this.setState({
             showConfirmModal: false,
-            enforceFocus: true
+            enforceFocus: true,
         });
 
         this.afterConfirm = null;
@@ -188,7 +188,7 @@ class UserSettingsModal extends React.Component {
     showConfirmModal(afterConfirm) {
         this.setState({
             showConfirmModal: true,
-            enforceFocus: false
+            enforceFocus: false,
         });
 
         if (afterConfirm) {
@@ -221,7 +221,7 @@ class UserSettingsModal extends React.Component {
             this.setState({
                 active_tab: tab,
                 active_section: '',
-                prev_active_section: ''
+                prev_active_section: '',
             });
         }
     }
@@ -232,7 +232,7 @@ class UserSettingsModal extends React.Component {
         } else {
             this.setState({
                 prev_active_section: section ? '' : this.state.active_section,
-                active_section: section
+                active_section: section,
             });
         }
     }
@@ -319,7 +319,7 @@ class UserSettingsModal extends React.Component {
 }
 
 UserSettingsModal.propTypes = {
-    intl: intlShape.isRequired
+    intl: intlShape.isRequired,
 };
 
 export default injectIntl(UserSettingsModal);

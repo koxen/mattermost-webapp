@@ -22,7 +22,7 @@ export default class ImportThemeModal extends React.Component {
             value: '',
             inputError: '',
             show: false,
-            callback: null
+            callback: null,
         };
     }
 
@@ -37,7 +37,7 @@ export default class ImportThemeModal extends React.Component {
     updateShow(show, args) {
         this.setState({
             show,
-            callback: args.callback
+            callback: args.callback,
         });
     }
 
@@ -53,7 +53,7 @@ export default class ImportThemeModal extends React.Component {
                         id='user.settings.import_theme.submitError'
                         defaultMessage='Invalid format, please try copying and pasting in again.'
                     />
-                )
+                ),
             });
             return;
         }
@@ -86,7 +86,7 @@ export default class ImportThemeModal extends React.Component {
         this.state.callback(theme);
         this.setState({
             show: false,
-            callback: null
+            callback: null,
         });
     }
 
@@ -137,7 +137,7 @@ export default class ImportThemeModal extends React.Component {
                         id='user.settings.import_theme.submitError'
                         defaultMessage='Invalid format, please try copying and pasting in again.'
                     />
-                )
+                ),
             });
         }
     }

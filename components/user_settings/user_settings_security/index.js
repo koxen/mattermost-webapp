@@ -15,7 +15,7 @@ function mapStateToProps(state, ownProps) {
     return {
         ...ownProps,
         userAccessTokens: state.entities.users.myUserAccessTokens,
-        canUseAccessTokens: tokensEnabled && userHasTokenRole
+        canUseAccessTokens: tokensEnabled && userHasTokenRole,
     };
 }
 
@@ -28,8 +28,8 @@ function mapDispatchToProps(dispatch) {
             revokeUserAccessToken,
             enableUserAccessToken,
             disableUserAccessToken,
-            clearUserAccessTokens
-        }, dispatch)
+            clearUserAccessTokens,
+        }, dispatch),
     };
 }
 

@@ -19,7 +19,7 @@ import FormError from 'components/form_error.jsx';
 export default class SignupLdap extends React.Component {
     static get propTypes() {
         return {
-            location: PropTypes.object
+            location: PropTypes.object,
         };
     }
 
@@ -35,7 +35,7 @@ export default class SignupLdap extends React.Component {
         this.state = ({
             ldapError: '',
             ldapId: '',
-            ldapPassword: ''
+            ldapPassword: '',
         });
     }
 
@@ -45,13 +45,13 @@ export default class SignupLdap extends React.Component {
 
     handleLdapIdChange(e) {
         this.setState({
-            ldapId: e.target.value
+            ldapId: e.target.value,
         });
     }
 
     handleLdapPasswordChange(e) {
         this.setState({
-            ldapPassword: e.target.value
+            ldapPassword: e.target.value,
         });
     }
 
@@ -67,7 +67,7 @@ export default class SignupLdap extends React.Component {
             this.handleLdapSignupSuccess,
             (err) => {
                 this.setState({
-                    ldapError: err.message
+                    ldapError: err.message,
                 });
             }
         );
@@ -195,7 +195,7 @@ export default class SignupLdap extends React.Component {
                         values={{
                             siteName: global.window.mm_config.SiteName,
                             TermsOfServiceLink: global.window.mm_config.TermsOfServiceLink,
-                            PrivacyPolicyLink: global.window.mm_config.PrivacyPolicyLink
+                            PrivacyPolicyLink: global.window.mm_config.PrivacyPolicyLink,
                         }}
                     />
                 </p>
@@ -242,7 +242,7 @@ export default class SignupLdap extends React.Component {
                             <Link
                                 to={{
                                     pathname: '/login',
-                                    search: this.props.location.search
+                                    search: this.props.location.search,
                                 }}
                             >
                                 <FormattedMessage

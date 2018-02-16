@@ -21,7 +21,7 @@ export default class EmailNotificationSetting extends React.Component {
         onCancel: PropTypes.func.isRequired,
         serverError: PropTypes.string,
         saving: PropTypes.bool,
-        focused: PropTypes.bool
+        focused: PropTypes.bool,
     };
 
     constructor(props) {
@@ -29,7 +29,7 @@ export default class EmailNotificationSetting extends React.Component {
 
         this.state = {
             enableEmail: props.enableEmail,
-            emailInterval: props.emailInterval
+            emailInterval: props.emailInterval,
         };
     }
 
@@ -37,7 +37,7 @@ export default class EmailNotificationSetting extends React.Component {
         if (!nextProps.saving && (nextProps.enableEmail !== this.props.enableEmail || nextProps.emailInterval !== this.props.emailInterval)) {
             this.setState({
                 enableEmail: nextProps.enableEmail,
-                emailInterval: nextProps.emailInterval
+                emailInterval: nextProps.emailInterval,
             });
         }
     }
@@ -47,7 +47,7 @@ export default class EmailNotificationSetting extends React.Component {
         const emailInterval = parseInt(e.currentTarget.getAttribute('data-email-interval'), 10);
         this.setState({
             enableEmail,
-            emailInterval
+            emailInterval,
         });
     }
 
@@ -71,7 +71,7 @@ export default class EmailNotificationSetting extends React.Component {
 
             this.setState({
                 enableEmail: this.props.enableEmail,
-                emailInterval: this.props.emailInterval
+                emailInterval: this.props.emailInterval,
             });
             this.props.onCancel();
         }
@@ -264,13 +264,13 @@ export default class EmailNotificationSetting extends React.Component {
                                 id='user.settings.notifications.emailInfo'
                                 defaultMessage='Email notifications are sent for mentions and direct messages when you are offline or away from {siteName} for more than 5 minutes.'
                                 values={{
-                                    siteName: global.window.mm_config.SiteName
+                                    siteName: global.window.mm_config.SiteName,
                                 }}
                             />
                             {' '}
                             {batchingInfo}
                         </div>
-                    </div>
+                    </div>,
                 ]}
                 submit={this.handleSubmit}
                 saving={this.props.saving}

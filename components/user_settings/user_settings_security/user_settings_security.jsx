@@ -82,8 +82,8 @@ export default class SecurityTab extends React.Component {
             /*
              * Function to clear personal access tokens locally
              */
-            clearUserAccessTokens: PropTypes.func.isRequired
-        }).isRequired
+            clearUserAccessTokens: PropTypes.func.isRequired,
+        }).isRequired,
     }
 
     constructor(props) {
@@ -102,7 +102,7 @@ export default class SecurityTab extends React.Component {
             tokenError: '',
             showConfirmModal: false,
             authService: this.props.user.auth_service,
-            savingPassword: false
+            savingPassword: false,
         };
     }
 
@@ -140,7 +140,7 @@ export default class SecurityTab extends React.Component {
         if (passwordErr !== '') {
             this.setState({
                 passwordError: passwordErr,
-                serverError: ''
+                serverError: '',
             });
             return;
         }
@@ -244,7 +244,7 @@ export default class SecurityTab extends React.Component {
             case SECTION_SIGNIN:
             case SECTION_APPS:
                 this.setState({
-                    serverError: null
+                    serverError: null,
                 });
                 break;
             case SECTION_PASSWORD:
@@ -253,7 +253,7 @@ export default class SecurityTab extends React.Component {
                     newPassword: '',
                     confirmPassword: '',
                     serverError: null,
-                    passwordError: null
+                    passwordError: null,
                 });
                 break;
             case SECTION_TOKENS:
@@ -261,7 +261,7 @@ export default class SecurityTab extends React.Component {
                     newToken: null,
                     tokenCreationState: TOKEN_NOT_CREATING,
                     serverError: null,
-                    tokenError: ''
+                    tokenError: '',
                 });
                 break;
             default:
@@ -584,7 +584,7 @@ export default class SecurityTab extends React.Component {
                                 hour='2-digit'
                                 minute='2-digit'
                             />
-                        )
+                        ),
                     }}
                 />
             );
@@ -1012,7 +1012,7 @@ export default class SecurityTab extends React.Component {
             confirmTitle: null,
             confirmMessage: null,
             confirmButton: null,
-            confirmComplete: null
+            confirmComplete: null,
         });
     }
 
@@ -1043,7 +1043,7 @@ export default class SecurityTab extends React.Component {
                 confirmComplete: () => {
                     this.handleCreateToken();
                     trackEvent('settings', 'system_admin_create_user_access_token');
-                }
+                },
             });
 
             return;
@@ -1075,7 +1075,7 @@ export default class SecurityTab extends React.Component {
                         id='user.settings.tokens.confirmDeleteMessage'
                         defaultMessage='Any integrations using this token will no longer be able to access the Mattermost API. You cannot undo this action. <br /><br />Are you sure want to delete the {description} token?'
                         values={{
-                            description: token.description
+                            description: token.description,
                         }}
                     />
                 </div>
@@ -1089,7 +1089,7 @@ export default class SecurityTab extends React.Component {
             confirmComplete: () => {
                 this.revokeToken(tokenId);
                 trackEvent('settings', 'revoke_user_access_token');
-            }
+            },
         });
     }
 
@@ -1525,5 +1525,5 @@ export default class SecurityTab extends React.Component {
 
 SecurityTab.defaultProps = {
     user: {},
-    activeSection: ''
+    activeSection: '',
 };

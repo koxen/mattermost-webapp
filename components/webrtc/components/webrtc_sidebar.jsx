@@ -22,7 +22,7 @@ export default class SidebarRight extends React.Component {
             currentUser: UserStore.getCurrentUser(),
             videoCallVisible: false,
             isCaller: false,
-            videoCallWithUserId: null
+            videoCallWithUserId: null,
         };
     }
 
@@ -85,7 +85,7 @@ export default class SidebarRight extends React.Component {
             videoCallVisible: (userId !== null),
             isCaller,
             videoCallWithUserId: userId,
-            expanded
+            expanded,
         });
     }
 

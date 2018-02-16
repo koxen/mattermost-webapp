@@ -9,7 +9,7 @@ import {mountWithIntl} from 'tests/helpers/intl-test-helper.jsx';
 import EmailNotificationSetting from 'components/user_settings/email_notification_setting.jsx';
 
 jest.mock('actions/user_actions.jsx', () => ({
-    savePreference: jest.fn()
+    savePreference: jest.fn(),
 }));
 
 describe('components/user_settings/EmailNotificationSetting', () => {
@@ -30,7 +30,7 @@ describe('components/user_settings/EmailNotificationSetting', () => {
         onSubmit,
         onCancel,
         serverError,
-        saving
+        saving,
     };
 
     global.window.mm_config = {};
@@ -158,7 +158,7 @@ describe('components/user_settings/EmailNotificationSetting', () => {
     test('should pass componentWillReceiveProps', () => {
         const nextProps = {
             enableEmail: true,
-            emailInterval: 30
+            emailInterval: 30,
         };
         const wrapper = mountWithIntl(<EmailNotificationSetting {...requiredProps}/>);
         wrapper.setProps(nextProps);

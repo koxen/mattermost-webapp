@@ -23,7 +23,7 @@ export default class TeamUrl extends React.Component {
 
         this.state = {
             nameError: '',
-            isLoading: false
+            isLoading: false,
         };
     }
 
@@ -49,7 +49,7 @@ export default class TeamUrl extends React.Component {
                 <FormattedMessage
                     id='create_team.team_url.required'
                     defaultMessage='This field is required'
-                />)
+                />),
             });
             return;
         }
@@ -61,9 +61,9 @@ export default class TeamUrl extends React.Component {
                     defaultMessage='Name must be {min} or more characters up to a maximum of {max}'
                     values={{
                         min: Constants.MIN_TEAMNAME_LENGTH,
-                        max: Constants.MAX_TEAMNAME_LENGTH
+                        max: Constants.MAX_TEAMNAME_LENGTH,
                     }}
-                />)
+                />),
             });
             return;
         }
@@ -73,7 +73,7 @@ export default class TeamUrl extends React.Component {
                 <FormattedMessage
                     id='create_team.team_url.regex'
                     defaultMessage="Use only lower case letters, numbers and dashes. Must start with a letter and can't end in a dash."
-                />)
+                />),
             });
             return;
         }
@@ -84,7 +84,7 @@ export default class TeamUrl extends React.Component {
                     <FormattedHTMLMessage
                         id='create_team.team_url.taken'
                         defaultMessage='This URL <a href="https://docs.mattermost.com/help/getting-started/creating-teams.html#team-url" target="_blank">starts with a reserved word</a> or is unavailable. Please try another.'
-                    />)
+                    />),
                 });
                 return;
             }
@@ -102,7 +102,7 @@ export default class TeamUrl extends React.Component {
                         <FormattedMessage
                             id='create_team.team_url.unavailable'
                             defaultMessage='This URL is taken or unavailable. Please try another.'
-                        />)
+                        />),
                     });
                     this.setState({isLoading: false});
                     return;
@@ -245,5 +245,5 @@ export default class TeamUrl extends React.Component {
 
 TeamUrl.propTypes = {
     state: PropTypes.object,
-    updateParent: PropTypes.func
+    updateParent: PropTypes.func,
 };

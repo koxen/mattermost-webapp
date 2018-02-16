@@ -21,7 +21,7 @@ import LoadingScreen from 'components/loading_screen.jsx';
 export default class SignupEmail extends React.Component {
     static get propTypes() {
         return {
-            location: PropTypes.object
+            location: PropTypes.object,
         };
     }
 
@@ -74,7 +74,7 @@ export default class SignupEmail extends React.Component {
                         serverError: '',
                         teamDisplayName: inviteData.display_name,
                         teamName: inviteData.name,
-                        teamId: inviteData.id
+                        teamId: inviteData.id,
                     });
                 },
                 () => {
@@ -86,7 +86,7 @@ export default class SignupEmail extends React.Component {
                                 id='signup_user_completed.invalid_invite'
                                 defaultMessage='The invite link was invalid.  Please speak with your Administrator to receive an invitation.'
                             />
-                        )
+                        ),
                     });
                 }
             );
@@ -105,7 +105,7 @@ export default class SignupEmail extends React.Component {
             inviteId,
             loading,
             serverError,
-            noOpenServerError
+            noOpenServerError,
         };
     }
 
@@ -137,7 +137,7 @@ export default class SignupEmail extends React.Component {
                 } else {
                     this.setState({
                         serverError: err.message,
-                        isSubmitting: false
+                        isSubmitting: false,
                     });
                 }
             }
@@ -151,7 +151,7 @@ export default class SignupEmail extends React.Component {
                 nameError: '',
                 emailError: (<FormattedMessage id='signup_user_completed.required'/>),
                 passwordError: '',
-                serverError: ''
+                serverError: '',
             });
             return false;
         }
@@ -161,7 +161,7 @@ export default class SignupEmail extends React.Component {
                 nameError: '',
                 emailError: (<FormattedMessage id='signup_user_completed.validEmail'/>),
                 passwordError: '',
-                serverError: ''
+                serverError: '',
             });
             return false;
         }
@@ -172,7 +172,7 @@ export default class SignupEmail extends React.Component {
                 nameError: (<FormattedMessage id='signup_user_completed.required'/>),
                 emailError: '',
                 passwordError: '',
-                serverError: ''
+                serverError: '',
             });
             return false;
         }
@@ -183,7 +183,7 @@ export default class SignupEmail extends React.Component {
                 nameError: (<FormattedMessage id='signup_user_completed.reserved'/>),
                 emailError: '',
                 passwordError: '',
-                serverError: ''
+                serverError: '',
             });
             return false;
         } else if (usernameError) {
@@ -193,13 +193,13 @@ export default class SignupEmail extends React.Component {
                         id='signup_user_completed.usernameLength'
                         values={{
                             min: Constants.MIN_USERNAME_LENGTH,
-                            max: Constants.MAX_USERNAME_LENGTH
+                            max: Constants.MAX_USERNAME_LENGTH,
                         }}
                     />
                 ),
                 emailError: '',
                 passwordError: '',
-                serverError: ''
+                serverError: '',
             });
             return false;
         }
@@ -211,7 +211,7 @@ export default class SignupEmail extends React.Component {
                 nameError: '',
                 emailError: '',
                 passwordError: pwdError,
-                serverError: ''
+                serverError: '',
             });
             return false;
         }
@@ -233,14 +233,14 @@ export default class SignupEmail extends React.Component {
                 emailError: '',
                 passwordError: '',
                 serverError: '',
-                isSubmitting: true
+                isSubmitting: true,
             });
 
             const user = {
                 email: this.refs.email.value.trim(),
                 username: this.refs.name.value.trim().toLowerCase(),
                 password: this.refs.password.value,
-                allow_marketing: true
+                allow_marketing: true,
             };
 
             createUserWithInvite(user,
@@ -251,7 +251,7 @@ export default class SignupEmail extends React.Component {
                 (err) => {
                     this.setState({
                         serverError: err.message,
-                        isSubmitting: false
+                        isSubmitting: false,
                     });
                 }
             );
@@ -283,7 +283,7 @@ export default class SignupEmail extends React.Component {
                     defaultMessage="Username must begin with a letter, and contain between {min} to {max} lowercase characters made up of numbers, letters, and the symbols '.', '-' and '_'"
                     values={{
                         min: Constants.MIN_USERNAME_LENGTH,
-                        max: Constants.MAX_USERNAME_LENGTH
+                        max: Constants.MAX_USERNAME_LENGTH,
                     }}
                 />
             </span>
@@ -310,7 +310,7 @@ export default class SignupEmail extends React.Component {
                     defaultMessage="Your email address is <strong>{email}</strong>. You'll use this address to sign in to {siteName}."
                     values={{
                         email: this.state.email,
-                        siteName: global.window.mm_config.SiteName
+                        siteName: global.window.mm_config.SiteName,
                     }}
                 />
             );
@@ -441,7 +441,7 @@ export default class SignupEmail extends React.Component {
                         values={{
                             siteName: global.window.mm_config.SiteName,
                             TermsOfServiceLink: global.window.mm_config.TermsOfServiceLink,
-                            PrivacyPolicyLink: global.window.mm_config.PrivacyPolicyLink
+                            PrivacyPolicyLink: global.window.mm_config.PrivacyPolicyLink,
                         }}
                     />
                 </p>

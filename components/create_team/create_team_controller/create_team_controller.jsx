@@ -104,5 +104,5 @@ CreateTeamController.propTypes = {
     customBrand: PropTypes.bool.isRequired,
     enableCustomBrand: PropTypes.bool.isRequired,
     customDescriptionText: PropTypes.string,
-    siteName: PropTypes.string
+    siteName: PropTypes.string,
 };

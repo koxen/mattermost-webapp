@@ -23,7 +23,7 @@ export default class DeletePostModal extends React.Component {
             show: false,
             post: null,
             commentCount: 0,
-            error: ''
+            error: '',
         };
     }
 
@@ -63,7 +63,7 @@ export default class DeletePostModal extends React.Component {
             show: value,
             post: args.post,
             commentCount: args.commentCount,
-            error: ''
+            error: '',
         });
     }
 
@@ -88,7 +88,7 @@ export default class DeletePostModal extends React.Component {
                     id='delete_post.warning'
                     defaultMessage='This post has {count, number} {count, plural, one {comment} other {comments}} on it.'
                     values={{
-                        count: this.state.commentCount
+                        count: this.state.commentCount,
                     }}
                 />
             );
@@ -117,7 +117,7 @@ export default class DeletePostModal extends React.Component {
                             id='delete_post.confirm'
                             defaultMessage='Confirm {term} Delete'
                             values={{
-                                term: (postTerm)
+                                term: (postTerm),
                             }}
                         />
                     </Modal.Title>
@@ -127,7 +127,7 @@ export default class DeletePostModal extends React.Component {
                         id='delete_post.question'
                         defaultMessage='Are you sure you want to delete this {term}?'
                         values={{
-                            term: (postTerm)
+                            term: (postTerm),
                         }}
                     />
                     <br/>

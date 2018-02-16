@@ -17,13 +17,13 @@ jest.mock('actions/global_actions.jsx', () => ({
     showChannelPurposeUpdateModal: jest.fn(),
     showChannelNameUpdateModal: jest.fn(),
     toggleShortcutsModal: jest.fn(),
-    postListScrollChange: jest.fn()
+    postListScrollChange: jest.fn(),
 }));
 
 jest.mock('react-dom', () => ({
     findDOMNode: () => ({
-        blur: jest.fn()
-    })
+        blur: jest.fn(),
+    }),
 }));
 
 jest.mock('actions/post_actions.jsx', () => ({
@@ -32,7 +32,7 @@ jest.mock('actions/post_actions.jsx', () => ({
         return new Promise((resolve) => {
             process.nextTick(() => resolve());
         });
-    })
+    }),
 }));
 
 const KeyCodes = Constants.KeyCodes;
@@ -45,13 +45,13 @@ const latestReplyablePostIdProp = 'a';
 
 const currentChannelProp = {
     id: 'owsyt8n43jfxjpzh9np93mx1wa',
-    type: 'O'
+    type: 'O',
 };
 const currentChannelMembersCountProp = 9;
 const draftProp = {
     message: '',
     uploadsInProgress: [],
-    fileInfos: []
+    fileInfos: [],
 };
 
 const ctrlSendProp = false;
@@ -70,7 +70,7 @@ const actionsProp = {
     clearDraftUploads: emptyFunction,
     onSubmitPost: emptyFunction,
     setDraft: emptyFunction,
-    setEditingPost: emptyFunction
+    setEditingPost: emptyFunction,
 };
 
 function createPost({
@@ -88,7 +88,7 @@ function createPost({
     currentUsersLatestPost = currentUsersLatestPostProp,
     commentCountForPost = commentCountForPostProp,
     readOnlyChannel = false,
-    canUploadFiles = true
+    canUploadFiles = true,
 } = {}) {
     return (
         <CreatePost
@@ -115,7 +115,7 @@ describe('components/create_post', () => {
     window.mm_config = {
         EnableEmojiPicker: 'true',
         EnableConfirmNotificationsToChannel: 'true',
-        EnableTutorial: 'true'
+        EnableTutorial: 'true',
     };
 
     it('should match snapshot, init', () => {
@@ -135,7 +135,7 @@ describe('components/create_post', () => {
         const clearDraftUploads = jest.fn();
         const actions = {
             ...actionsProp,
-            clearDraftUploads
+            clearDraftUploads,
         };
 
         shallow(createPost({actions}));
@@ -147,7 +147,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
         const draft = {
             ...draftProp,
-            message: 'test'
+            message: 'test',
         };
 
         expect(wrapper.state('message')).toBe('');
@@ -158,8 +158,8 @@ describe('components/create_post', () => {
         wrapper.setProps({
             currentChannel: {
                 ...currentChannelProp,
-                id: 'owsyt8n43jfxjpzh9np93mx1wb'
-            }
+                id: 'owsyt8n43jfxjpzh9np93mx1wb',
+            },
         });
         expect(wrapper.state('message')).toBe('test');
     });
@@ -183,14 +183,14 @@ describe('components/create_post', () => {
         expect(wrapper.state('message')).toBe(':smile: ');
 
         wrapper.setState({
-            message: 'test'
+            message: 'test',
         });
 
         wrapper.instance().handleEmojiClick({name: 'smile'});
         expect(wrapper.state('message')).toBe('test :smile: ');
 
         wrapper.setState({
-            message: 'test '
+            message: 'test ',
         });
 
         wrapper.instance().handleEmojiClick({name: 'smile'});
@@ -201,15 +201,15 @@ describe('components/create_post', () => {
         const setDraft = jest.fn();
         const draft = {
             ...draftProp,
-            message: 'change'
+            message: 'change',
         };
 
         const wrapper = shallow(
             createPost({
                 actions: {
                     ...actionsProp,
-                    setDraft
-                }
+                    setDraft,
+                },
             })
         );
 
@@ -230,7 +230,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: 'test @all'
+            message: 'test @all',
         });
 
         const form = wrapper.find('#create_post');
@@ -240,7 +240,7 @@ describe('components/create_post', () => {
         expect(wrapper.state('showConfirmModal')).toBe(false);
 
         wrapper.setProps({
-            currentChannelMembersCount: 2
+            currentChannelMembersCount: 2,
         });
 
         form.simulate('Submit', {preventDefault: jest.fn()});
@@ -251,7 +251,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: '/header'
+            message: '/header',
         });
 
         const form = wrapper.find('#create_post');
@@ -263,7 +263,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: '/purpose'
+            message: '/purpose',
         });
 
         const form = wrapper.find('#create_post');
@@ -275,7 +275,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: '/rename'
+            message: '/rename',
         });
 
         const form = wrapper.find('#create_post');
@@ -287,7 +287,7 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: '/purpose'
+            message: '/purpose',
         });
 
         const form = wrapper.find('#create_post');
@@ -297,13 +297,13 @@ describe('components/create_post', () => {
 
     it('onSubmit test for "/unknown" message ', () => {
         jest.mock('actions/channel_actions.jsx', () => ({
-            executeCommand: jest.fn((message, _args, resolve) => resolve())
+            executeCommand: jest.fn((message, _args, resolve) => resolve()),
         }));
 
         const wrapper = shallow(createPost());
 
         wrapper.setState({
-            message: '/unknown'
+            message: '/unknown',
         });
 
         const form = wrapper.find('#create_post');
@@ -318,13 +318,13 @@ describe('components/create_post', () => {
             createPost({
                 actions: {
                     ...actionsProp,
-                    addReaction
-                }
+                    addReaction,
+                },
             })
         );
 
         wrapper.setState({
-            message: '+:smile:'
+            message: '+:smile:',
         });
 
         const form = wrapper.find('#create_post');
@@ -339,13 +339,13 @@ describe('components/create_post', () => {
             createPost({
                 actions: {
                     ...actionsProp,
-                    removeReaction
-                }
+                    removeReaction,
+                },
             })
         );
 
         wrapper.setState({
-            message: '-:smile:'
+            message: '-:smile:',
         });
 
         const form = wrapper.find('#create_post');
@@ -362,7 +362,7 @@ describe('components/create_post', () => {
         expect(wrapper.state('postError')).toBe(true);
 
         wrapper.setState({
-            message: 'test'
+            message: 'test',
         });
 
         form.simulate('Submit', {preventDefault: jest.fn()});
@@ -387,8 +387,8 @@ describe('components/create_post', () => {
             createPost({
                 actions: {
                     ...actionsProp,
-                    setDraft
-                }
+                    setDraft,
+                },
             })
         );
 
@@ -398,8 +398,8 @@ describe('components/create_post', () => {
             ...draftProp,
             uploadsInProgress: [
                 ...draftProp.uploadsInProgress,
-                ...clientIds
-            ]
+                ...clientIds,
+            ],
         };
 
         instance.handleUploadStart(clientIds, currentChannelProp.id);
@@ -413,8 +413,8 @@ describe('components/create_post', () => {
             createPost({
                 actions: {
                     ...actionsProp,
-                    setDraft
-                }
+                    setDraft,
+                },
             })
         );
 
@@ -424,20 +424,20 @@ describe('components/create_post', () => {
             ...draftProp,
             uploadsInProgress: [
                 ...draftProp.uploadsInProgress,
-                'a'
-            ]
+                'a',
+            ],
         };
 
         wrapper.setProps({draft: uploadsInProgressDraft});
         const fileInfos = {
-            id: 'a'
+            id: 'a',
         };
         const expectedDraft = {
             ...draftProp,
             fileInfos: [
                 ...draftProp.fileInfos,
-                fileInfos
-            ]
+                fileInfos,
+            ],
         };
 
         instance.handleFileUploadComplete(fileInfos, clientIds, currentChannelProp.id);
@@ -451,8 +451,8 @@ describe('components/create_post', () => {
             createPost({
                 actions: {
                     ...actionsProp,
-                    setDraft
-                }
+                    setDraft,
+                },
             })
         );
 
@@ -461,8 +461,8 @@ describe('components/create_post', () => {
             ...draftProp,
             uploadsInProgress: [
                 ...draftProp.uploadsInProgress,
-                'a'
-            ]
+                'a',
+            ],
         };
 
         wrapper.setProps({draft: uploadsInProgressDraft});
@@ -477,26 +477,26 @@ describe('components/create_post', () => {
         const fileInfos = {
             id: 'a',
             extension: 'jpg',
-            name: 'trimmedFilename'
+            name: 'trimmedFilename',
         };
         const uploadsInProgressDraft = {
             ...draftProp,
             fileInfos: [
                 ...draftProp.fileInfos,
-                fileInfos
-            ]
+                fileInfos,
+            ],
         };
 
         const wrapper = shallow(
             createPost({
                 actions: {
                     ...actionsProp,
-                    setDraft
+                    setDraft,
                 },
                 draft: {
                     ...draftProp,
-                    ...uploadsInProgressDraft
-                }
+                    ...uploadsInProgressDraft,
+                },
             })
         );
 
@@ -519,7 +519,7 @@ describe('components/create_post', () => {
 
     it('Should just return as ctrlSend is enabled and its ctrl+enter', () => {
         const wrapper = shallow(createPost({
-            ctrlSend: true
+            ctrlSend: true,
         }));
         const instance = wrapper.instance();
         instance.handleKeyDown({ctrlKey: true, keyCode: Constants.KeyCodes.ENTER});
@@ -531,8 +531,8 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost({
             actions: {
                 ...actionsProp,
-                setEditingPost
-            }
+                setEditingPost,
+            },
         }));
         const instance = wrapper.instance();
         const type = Utils.localizeMessage('create_post.comment', Posts.MESSAGE_TYPES.COMMENT);
@@ -545,13 +545,13 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost({
             actions: {
                 ...actionsProp,
-                setEditingPost
-            }
+                setEditingPost,
+            },
         }));
         const instance = wrapper.instance();
 
         wrapper.setProps({
-            currentUsersLatestPost: {id: 'b', channel_id: currentChannelProp.id}
+            currentUsersLatestPost: {id: 'b', channel_id: currentChannelProp.id},
         });
 
         const type = Utils.localizeMessage('create_post.post', Posts.MESSAGE_TYPES.POST);
@@ -570,8 +570,8 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost({
             actions: {
                 ...actionsProp,
-                moveHistoryIndexForward
-            }
+                moveHistoryIndexForward,
+            },
         }));
         const instance = wrapper.instance();
 
@@ -590,8 +590,8 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost({
             actions: {
                 ...actionsProp,
-                moveHistoryIndexBack
-            }
+                moveHistoryIndexBack,
+            },
         }));
         const instance = wrapper.instance();
 
@@ -601,7 +601,7 @@ describe('components/create_post', () => {
 
     it('Show tutorial', () => {
         const wrapper = shallow(createPost({
-            showTutorialTip: true
+            showTutorialTip: true,
         }));
         expect(wrapper.find('TutorialTip').length).toBe(1);
     });
@@ -621,8 +621,8 @@ describe('components/create_post', () => {
         const wrapper = shallow(createPost({
             actions: {
                 ...actionsProp,
-                onSubmitPost
-            }
+                onSubmitPost,
+            },
         }));
         const post = {message: 'message', file_ids: []};
         wrapper.instance().sendMessage(post);

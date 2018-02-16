@@ -33,7 +33,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
             advancedCtrlSend: 'dummySectionName', // dummy value that should never match any section name
             formatting: 'advancedCtrlSend',
             join_leave: 'formatting',
-            advancedPreviewFeatures: 'join_leave'
+            advancedPreviewFeatures: 'join_leave',
         };
     }
 
@@ -55,7 +55,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
                 Constants.Preferences.CATEGORY_ADVANCED_SETTINGS,
                 'join_leave',
                 'true'
-            )
+            ),
         };
 
         const webrtcEnabled = global.mm_config.EnableWebrtc === 'true';
@@ -89,7 +89,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
             preReleaseFeaturesKeys,
             enabledFeatures,
             isSaving,
-            previewFeaturesEnabled
+            previewFeaturesEnabled,
         };
     }
 
@@ -134,7 +134,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
                 user_id: userId,
                 category: Constants.Preferences.CATEGORY_ADVANCED_SETTINGS,
                 name: setting,
-                value: this.state.settings[setting]
+                value: this.state.settings[setting],
             });
         });
 
@@ -225,7 +225,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
                                     defaultMessage='If enabled, posts will be formatted to create links, show emoji, style the text, and add line breaks. By default, this setting is enabled. Changing this setting requires the page to be refreshed.'
                                 />
                             </div>
-                        </div>
+                        </div>,
                     ]}
                     setting={'formatting'}
                     submit={this.handleSubmit}
@@ -304,7 +304,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
                                         defaultMessage='When "On", System Messages saying a user has joined or left a channel will be visible. When "Off", the System Messages about joining or leaving a channel will be hidden. A message will still show up when you are added to a channel, so you can receive a notification.'
                                     />
                                 </div>
-                            </div>
+                            </div>,
                         ]}
                         setting={'join_leave'}
                         submit={this.handleSubmit}
@@ -362,7 +362,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
         if (this.props.activeSection === 'advancedCtrlSend') {
             const ctrlSendActive = [
                 this.state.settings.send_on_ctrl_enter === 'true',
-                this.state.settings.send_on_ctrl_enter === 'false'
+                this.state.settings.send_on_ctrl_enter === 'false',
             ];
 
             const inputs = [
@@ -406,7 +406,7 @@ export default class AdvancedSettingsDisplay extends React.Component {
                             defaultMessage='If enabled ENTER inserts a new line and CTRL+ENTER submits the message.'
                         />
                     </div>
-                </div>
+                </div>,
             ];
             ctrlSendSection = (
                 <SettingItemMax
@@ -588,5 +588,5 @@ AdvancedSettingsDisplay.propTypes = {
     activeSection: PropTypes.string,
     prevActiveSection: PropTypes.string,
     closeModal: PropTypes.func.isRequired,
-    collapseModal: PropTypes.func.isRequired
+    collapseModal: PropTypes.func.isRequired,
 };
